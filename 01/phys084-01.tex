@@ -1,0 +1,90 @@
+\documentclass{../phys084}
+
+\pset{1}
+\author{}
+\date{January 29, 2020}
+
+\begin{document}
+
+\section{Matrix math plus}
+\begin{exercise}
+  Consider the matrix
+  \(\begin{bmatrix} 2 & i \\ -i & 2 \end{bmatrix}\).
+  \begin{problems}
+  \item Find the eigenvalues of this matrix and find an eigenvector
+    associated with each eigenvalue.
+  \item Could this matrix represent a quantum logic gate?  If not,
+    could you multiply it by a scalar (a number) to turn it into a
+    matrix that represents a quantum logic gate?  Explain.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Single-qubit quantum circuit}
+\begin{exercise}
+  \begin{problems}
+  \item Draw a quantum circuit that uses only H, Z, and/or X gates to
+    accomplish the following transformation of the qubit states
+    \(\ket 0\) and \(\ket 1\):
+    \begin{align}
+      \ket 0 &\to \frac{1}{\sqrt 2} \ket 0 - \frac{1}{\sqrt 2} \ket 1, \\
+      \ket 1 &\to \frac{1}{\sqrt 2} \ket 0 + \frac{1}{\sqrt 2} \ket 1.
+    \end{align}
+  \item If a qubit in the general state
+    \(\ket \psi = \alpha \ket 0 + \beta \ket 1\) is used as the input
+    to your quantum circuit, what will the output state be?  Write it
+    as a superposition of \(\ket 0\) and \(\ket 1\).
+  \item What is the matrix representation of your quantum circuit in
+    the \(\set{\ket 0, \ket 1}\) basis?  Find this matrix
+    representation in two different ways: first, write down the matrix
+    representation from the information given in part (a) about how
+    the circuit transforms \(\ket 0\) and \(\ket 1\).  Second, find
+    the matrix representation of the circuit by multiplying the matrix
+    representations of H, X, and/or Z gates appropriately in sequence.
+    (As a qubit progresses through a quantum circuit from left to
+    right, matrices multiply the original column vector from right to
+    left!)
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Measuring a qubit}
+
+\begin{exercise}
+  A qubit is prepared in the quantum state
+  \(\ket \psi = \frac{1}{\sqrt 3} \ket 0 + i \sqrt{\frac 2 3} \ket
+  1\).
+  \begin{problems}
+  \item Suppose we perform a measurement to determine whether the
+    qubit is in state \(\ket 0\) or \(\ket 1\).  This is called
+    \textit{a measurement in the \(\set{\ket 0, \ket 1}\) basis}.
+    What is the probability of finding the qubit in state \(\ket 0\)?
+  \item Suppose instead, we perform a measurement in the
+    \(\set{\ket +, \ket -}\) basis.  In other words, we perform a
+    measurement to determine whether the qubit is in state \(\ket +\)
+    or \(\ket -\).  What is the probability of finding the qubit in
+    state \(\ket +\)?
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Why ``NOT gate'' is a questionable name}
+\begin{exercise}
+  Suppose we would like to write the matrix representation of the
+  so-called ``quantum NOT gate,'' or X gate, in the
+  \(\set{\ket +, \ket -}\) basis.  What is that matrix representation?
+  Recall that the matrix representation of the X gate in the
+  \(\set{\ket 0, \ket 1}\) basis is
+  \(\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\).
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\end{document}
