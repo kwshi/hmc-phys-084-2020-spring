@@ -134,6 +134,7 @@
 
 \DeclareMathOperator{\diam}{diam}
 
+\DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{{#1} \delimsize\vert {#2}}
 \DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
 \DeclarePairedDelimiter{\bra}{\langle}{\rvert}
 \DeclarePairedDelimiter{\cbr}{\{}{\}}
