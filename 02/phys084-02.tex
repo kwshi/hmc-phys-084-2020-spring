@@ -1,0 +1,189 @@
+\documentclass{../phys084}
+
+\pset{2}
+\author{}
+\date{2020 February 5}
+
+\begin{document}
+
+\section{Unitary evolution}
+
+\begin{exercise}
+  Recall that a unitary matrix satisfies \(U^\dagger U = I\), where
+  \(U^\dagger\) is the complex conjugate transpose of \(U\).
+  Likewise, a unitary operator has \(\hat U^\dagger \hat U = \hat I\).
+
+  \begin{problems}
+  \item From the facts above, show that a unitary operator must
+    preserve the inner product between states.  That is, show that the
+    inner product of state \(\ket \psi\) with state \(\ket \phi\) is
+    equal to the inner product of state \(\hat U \ket \psi\) with
+    state \(\hat U \ket \phi\).  Here the states may be \(n\)-qubit
+    states (in which case the unitary operator is an \(n\)-qubit
+    operator), so make your argument general.
+  \item Show that a \(2 \times 2\) matrix
+    \(U = \begin{bmatrix} a & b \\ c & d \end{bmatrix}\) is unitary if
+    and only if it satisfies the constraints
+    \begin{align*}
+      \abs a^2 + \abs c^2 &= 1, \\
+      \abs b^2 + \abs d^2 &= 1, \\
+      b^*a + d^* c &= 0.
+    \end{align*}
+    This means an arbitrary \(2 \times 2\) unitary matrix can be
+    written in terms of four real numbers \(x\), \(y\), \(w\), and
+    \(\Delta\) as follows (you don't have to show this):
+    \[
+      U =
+      \begin{bmatrix}
+        e^{i\omega} \cos \frac \Delta 2 & e^{-ix} \sin \frac \Delta 2 \\
+        e^{iy} \sin \frac \Delta 2 & e^{i(x+y-w)} \cos \frac \Delta 2
+      \end{bmatrix}.
+    \]
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Single-qubit gates}
+
+\begin{exercise}
+  \begin{problems}
+  \item A class of unitary single-qubit operators \(\hat{R_z}(\beta)\)
+    is represented in the \(\set*{\ket 0, \ket 1}\) basis by matrices
+    \[
+      R_z(\beta) =
+      \begin{bmatrix}
+        e^{-i\beta/2} &  0 \\ 0 & e^{i\beta/2}
+      \end{bmatrix}.
+    \]
+    \textbf{Show} that \(\hat{R_z}(\beta)\) is a rotation by angle
+    \(\beta\) around the \(z\) axis on the Bloch sphere.  Remember
+    that multiplying a qubit state by an overall phase factor is
+    meaningless and can thus be neglected.
+  \item Another class of unitary operators \(\hat{R_y}(\Delta)\) is
+    represented in the \(\set*{\ket 0, \ket 1}\) basis by matrices
+    \[
+      R_y(\Delta)=
+      \begin{bmatrix}
+        \cos \frac \Delta 2 & -\sin \frac \Delta 2 \\
+        \sin \frac \Delta 2 & \cos \frac \Delta 2
+      \end{bmatrix}.
+    \]
+    \textbf{Show} that \(\hat{R_y}(\Delta)\) is a rotation by angle
+    \(\Delta\) around the ``y'' axis on the Bloch sphere.  Using the
+    following reasoning might be helpful: From part (a), we know the
+    matrix form of a rotation around the ``z'' axis when expressed in
+    the basis of states that point along \(\pm\)z on the Bloch sphere.
+    The identical form must also be taken by rotations around the
+    ``y'' axis when expressed in the basis of states that point along
+    \(\pm y\) on the Bloch sphere.  Show what the action of
+    \(\hat{R_y}(\Delta)\) looks like in the
+    \(\set*{\frac{1}{\sqrt 2} \prn*{\ket 0 + i \ket 1}, \frac{1}{\sqrt
+        2} \prn*{\ket 0 - i \ket 1}}\) basis, to show that it
+    represents rotation by \(\Delta\) around the \(y\) axis.
+  \item It might be tempting to suggest that a \(\pi\) rotation about
+    the ``y'' axis on the Bloch sphere is an X gate, or quantum NOT
+    gate.  \textbf{Disprove} that suggestion by by demonstrating an
+    input state that does not transform the same way under the two
+    operations.  However, an X gate \textit{is} a \(\pi\) rotation
+    about some axis on the Bloch sphere.  Taking that fact as given,
+    \textbf{specify} what the correct axis is, and justify your
+    answer.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Fidelity of state guesses}
+
+\begin{exercise}
+  Consider the following qubit guessing game (name credits to Tommy
+  Schneider `20).  Avril chooses a state \(\ket \psi\) randomly and
+  prepares a single qubit in that state.  She asks her game partner,
+  Boi, to guess the qubit's state.  Whatever guess \(\ket \gamma\) Boi
+  makes, Avril then measures the qubit in the
+  \(\set*{\ket \gamma, \ket{\gamma_\perp}}\) basis.  Boi wins if the
+  qubit is found in \(\ket \gamma\), which should happen with
+  probability \(\abs*{\braket \gamma \psi}^2\).  The quantity
+  \(\abs*{\braket \gamma \psi}^2\) is also known as the
+  \textit{fidelity} \(F\) of Boi's guess.  Avril and Boi sometimes
+  play many rounds of this game, in which case Avril picks a new
+  random state to start each round.
+  \begin{problems}
+  \item Suppose Boi employs the following guessing scheme: lacking any
+    information about the state, he decides to always guess
+    \(\ket 0\).  \textbf{With what probability will Boi win the game?}
+    Demonstrate an exact answer by calculating the average guess
+    fidelity analytically, \textit{or} demonstrate an approximate
+    answer by doing a Monte Carlo simulation of many rounds of the
+    game.  If you choose the second option, turn in a (well-commented)
+    printout of your code.
+
+    For either choice, you need to think about how Avril would go
+    about picking a qubit state at random.  A fair method is to pick a
+    random point on the surface of the Bloch sphere, which has some
+    values of \(\theta\) (from \(0\) to \(\pi\)) and \(\varphi\) (from
+    \(0\) to \(2\pi\)), and then construct the state
+    \(\ket \psi = \cos \frac \theta 2 \ket 0 + e^{i\varphi} \sin \frac
+    \theta 2 \ket 1\).  Therefore, the probability of selecting a
+    state between \(\theta\) and \(\theta + \dif \theta\) and between
+    \(\varphi\) and \(\varphi + \dif \varphi\) would be given by the
+    surface area of that patch on the Bloch sphere, divided by the
+    total surface area of the Bloch sphere:
+    \[
+      \frac{\sin \theta \dif \theta \dif \varphi}{4 \pi}
+    \]
+  \item Suppose Avril offers to make the game easier for Boi.  In each
+    round, she still chooses a state \(\ket \psi\) at random, but then
+    she prepares \textit{two} qubits in the same state \(\ket \psi\).
+    She gives one qubit to Boi, who can do whatever he wants with it
+    to help him guess the state. Boi gives his guess, and Avril
+    measures the second qubit to see if Boi wins, just as in the
+    original version of the game.
+
+    Boi decides on the following strategy.  He takes the qubit Avril
+    gives him, and measures it in the \(\set*{\ket 0, \ket 1}\) basis.
+    If Boi finds the qubit in \(\ket 0\), he guesses that the original
+    state was \(\ket 0\), and if he finds the qubit in \(\ket 1\), he
+    guesses that the original state was \(\ket 1\).
+
+    \textbf{With what probability will Boi win this revised game?}
+    For an individual state \(\ket \psi\), the average fidelity of
+    Boi's guessing process will be the probability that Bob measures
+    (and guesses) \(\ket 0\) times the fidelity of the \(\ket 0\)
+    guess, plus the probability that Boi measures (and guesses)
+    \(\ket 1\) times the fidelity of the \(\ket 1\) guess.  To get
+    Boi's overall probability of winning, we must further average over
+    all possible states \(\ket \psi\) on the Bloch sphere.  As in part
+    (a), demonstrate an exact answer by calculating the average guess
+    fidelity analytically, \textit{or} demonstrate an approximate
+    answer by doing a Monte Carlo simulation of many rounds of the
+    game.  If you choose the second option, turn in a (well-commented)
+    printout of your code.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{CNOT with change of basis}
+
+\begin{exercise}
+  Show that surrounding a CNOT gate with Hadamard transforms on the
+  input and output channels is equivalent to reversing its control and
+  target qubits:
+  \[
+    \Qcircuit @C=2em @R=.5em {
+      & \gate H & \ctrl 2 & \gate H & \qw &   & & \targ     & \qw \\
+      &         &         &         &     & = & &           &     \\
+      & \gate H & \targ   & \gate H & \qw &   & & \ctrl{-2} & \qw
+    }
+  \]
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\end{document}
