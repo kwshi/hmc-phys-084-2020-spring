@@ -58,8 +58,38 @@
 \RequirePackage{pgfplots}
 
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{matrix}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
+
+\tikzset{
+  gate/.style={
+    draw,
+  },
+  ctrl/.style={
+    circle,
+    fill,
+    inner sep=0pt,
+    minimum size=4pt,
+  },
+  targ/.style={
+    circle,
+    draw,
+    inner sep=0pt,
+    minimum size=8pt,
+    path picture={
+      \draw
+      (current bounding box.south) -- (current bounding box.north)
+      (current bounding box.west) -- (current bounding box.east);
+    },
+  },
+  quantum circuit/.style={
+    matrix of math nodes,
+    cells={anchor=center},
+    row sep=1em,
+    column sep=1em,
+  },
+}
 
 \pgfplotsset{compat=1.16}
 \usepgfplotslibrary{patchplots}
@@ -133,6 +163,9 @@
 \newcommand{\pdrv}[3][]{\frac{\pdif^{#1} #2}{\pdif #3^{#1}}}
 
 \DeclareMathOperator{\diam}{diam}
+
+\DeclareMathOperator{\CNOT}{CNOT}
+\DeclareMathOperator{\CCNOT}{CCNOT}
 
 \DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{{#1} \delimsize\vert {#2}}
 \DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
