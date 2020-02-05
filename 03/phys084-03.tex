@@ -1,0 +1,213 @@
+\documentclass{../phys084}
+
+\pset{3}
+\author{}
+\date{2020 February 12}
+
+\begin{document}
+
+\section{The \(n\)-bit Deutsch--Jozsa algorithm}
+
+\begin{exercise}
+  The \(n\)-bit Deutsch--Jozsa algorithm determines whether a
+  two-valued function of an \(n\)-bit string,
+  \(f \colon \set{0, 1}^{\otimes n} \to \set{0, 1}\), is constant or
+  balanced.  (For \(n > 1\) most functions are neither constant
+  \textit{nor} balanced, but in this scenario we've been assured that
+  \(f\) is either one or the other; we only need to decide which.)  An
+  oracle F takes an \(n\)-bit input \(x\) (or \(\ket x\)) and a single
+  target bit \(y\) (or \(\ket y\)).  It computes \(f(x)\) by taking
+  \(y\) to \(y \oplus f(x)\) (or \(\ket y\) to
+  \(\ket{y \oplus f(x)}\)) just as in the one-bit algorithm.  In the
+  quantum case, \(\ket x\) is an \(n\)-qubit computational basis
+  state; \textit{e.g.}, \(\ket 0 \ket 1 \ket 0 \ket 0 \dots \ket 1\)
+  to represent \(x = 0100 \dots 1\).
+
+  \begin{problems}
+  \item In the classical case, we call the oracle on different \(x\)
+    inputs, record the various \(f(x)\) values, and compare them.  In
+    the \(n\)-bit classical case, what are the minimum and maximum
+    numbers of function calls needed to determine whether the function
+    is constant or balanced?
+
+  \item In the next two parts of the problem, you will show that the
+    quantum circuit below answers the question in just one function
+    call.  \textbf{Explain}, by determining the relevant properties of
+    the \((n+1)\)-qubit state through the stages of the computation,
+    what \(n\)-qubit measurement result you must get in the circuit
+    below if the oracle encodes a constant \(f\).  \label{itm:circuit}
+
+    % \includegraphics[width=300pt]{fig2-1-1.pdf}
+
+  \item Consider the same circuit as in part \ref{itm:circuit}, but
+    let the oracle encode a balanced function \(f\).  \textbf{Show}
+    that you can \textit{never} get the same \(n\)-qubit measurement
+    result as you were guaranteed in part (b).  [Hint: Show that the
+    state after the oracle F for a balanced function is orthogonal to
+    the state after the oracle F for a constant function.  Unitary
+    evolution preserves orthogonality, so now you know that the state
+    right before measurement for a balanced function is orthogonal to
+    the state right before measurement for a constant function.  Use
+    that to show the measurement always yields different results for a
+    balanced function vs. a constant one.]
+
+    This circuit is the \(n\)-bit or generalized Deutsch--Jozsa
+    algorithm; though David Deutsch and Richard Jozsa contributed
+    greatly to its development, the algorithm in its present form was
+    actually published by Richard Cleve, Artur Ekert, Chiara
+    Macchiavello, and Michele Mosca in 1998. (See, \textit{e.g.},
+    \url{arxiv.org/abs/quant-ph/9708016} after you have solved this
+    homework problem.)
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Creating entangled states}
+
+\begin{exercise}
+  One of the entangled ``Bell states'' of two qubits is
+  \[
+    \ket{\Psi^-}
+    = \frac{\ket 0_A \ket 1_B - \ket 1_A \ket 0_B}{\sqrt 2}.
+  \]
+
+  Design a quantum logic circuit, using gates we have discussed in
+  class, to create this two-qubit state starting from input qubits
+  each initialized in the state \(\ket 0\).  Show that your circuit
+  produces the state \(\ket{\Psi^-}\) as its output.
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\section{Measurements on one member of an entangled pair}
+
+\begin{exercise}
+  If we have just one qubit in state \(\ket \psi\), and we measure it
+  in the \(\set{\ket 0, \ket 1}\) basis, we already know that the
+  probability of finding it in state \(\ket 0\) is
+  \[
+    \abs{\braket 0 \psi}^2
+    = \braket \psi 0\braket 0 \psi
+    = \bra \psi (\ket 0 \bra 0) \ket \psi.
+  \]
+  In the last line above, \(\ket 0 \bra 0\) is an \textit{operator}.
+  (Pick a basis and consider the matrix representations of all these
+  things.  \(\ket 0\) is represented by a column vector, \(\bra 0\) is
+  represented by a row vector, and therefore multiplying them in this
+  order give a matrix, not a number!)  As discussed in Chapter 4, we
+  can call \(\ket 0 \bra 0\) the projection operator \(\hat P_0\) onto
+  state \(\ket 0\).  This way of thinking about measurement
+  probabilities is helpful when thinking about situations where we
+  have several qubits, but we measure only a subset of them.
+
+  Consider the two-qubit state \(\ket{\Psi^-}\), but imagine that we
+  perform a measurement on qubit \(A\) only.
+\end{exercise}
+
+\begin{problems}
+\item Consider measuring qubit \(A\) in the
+  \(\set{\ket 0_A, \ket 1_A}\) basis.  The probability of finding
+  qubit \(A\) in state \(\ket 0_A\) is given by
+  \[
+    \bra*{\Psi^-} \prn*{\hat P_{0,A} \otimes \hat I_B} \ket*{\Psi^-};
+  \]
+  here, \(\hat P_ 0\) is the single-qubit projection operator
+  \(\hat P_ 0 = \ket 0 \bra 0\).  The subscript \(A\) indicates that
+  it acts on qubit \(A\), and it is tensored with the identity
+  operator \(\hat I\) acting on qubit \(B\) since no measurement is
+  performed on qubit \(B\).  \textbf{Show} that the probability of
+  finding qubit \(A\) in state \(\ket 0_A\) is \(\frac 1 2\).
+
+\item We may choose to write each qubit's state, not as a
+  superposition of \(\ket 0\) and \(\ket 1\), but as a superposition
+  of \(\ket \psi\) and \(\ket{\psi_\perp}\), where
+  \(\ket 0 = \alpha \ket \psi + \beta \ket{\psi_\perp}\),
+  \(\ket 1 = -\beta^* \ket \psi + \alpha^* \ket{\psi_\perp}\), and
+  \(\abs \alpha^2 + \abs \beta^2 = 1\).  \textbf{Show} that:
+  \[
+    \ket{\Psi^-} = \frac
+    {\ket \psi_A\ket{\psi_\perp}_B - \ket{\psi_\perp}_A\ket \psi_B}
+    {\sqrt 2}.
+  \]
+
+\item If we measure qubit \(A\) in \textit{any}
+  \(\set*{\ket \psi_A, \ket{\psi_\perp}_A}\) basis, \textbf{show} that
+  the probability of finding qubit \(A\) in the state \(\ket \psi_A\)
+  is \(\frac 1 2\).  Thus the state of qubit \(A\) by itself,
+  independent of the state of qubit \(B\), is completely uncertain and
+  contains no information.  This is the hallmark of complete
+  entanglement between two particles.
+
+\end{problems}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Controlled \(U\) from \(\CNOT\) and single-qubit unitaries}
+
+\begin{exercise}
+  In class, we constructed a general two-qubit controlled \(U\) gate
+  from \(\CNOT\) and single-qubit unitaries by first claiming that we
+  could write a general one-qubit \(U\) as \(U = e^{i\alpha}AXBXC\).
+  Here \(X =
+  \begin{bmatrix}
+    0 & 1 \\ 1 & 0
+  \end{bmatrix}
+  \) in the computational basis, and \(A\), \(B\), and \(C\) are
+  unitary matrices such that \(ABC=I\).  In this problem, you will
+  actually show that a general one-qubit \(U\) can be written this
+  way.
+\end{exercise}
+
+\begin{problems}
+\item Show that \(XR_y (\Delta) X = R_y (-\Delta)\), where
+  \(R_y(\Delta) =
+  \begin{bmatrix}
+    \cos \frac \Delta 2 & -\sin \frac \Delta 2 \\
+    \sin \frac \Delta 2 &  \cos \frac \Delta 2
+  \end{bmatrix}
+  \) represents rotation by angle \(\Delta\) about the \(y\) axis on
+  the Bloch sphere.
+
+\item Show that \(XR_z(\gamma)X = R_z(-\gamma)\), where
+  \(R_z(\gamma) =
+  \begin{bmatrix}
+    e^{-i\gamma/2} & 0 \\ 0 & e^{i\gamma/2}
+  \end{bmatrix}
+  \) represents rotation by angle \(\gamma\) about the \(z\) axis on
+  the Bloch sphere.
+
+\item Show that
+  \begin{align*}
+    A &= R_z(\beta') R_y \prn*{\frac \Delta 2}, \\
+    B &= R_y\prn*{-\frac \Delta 2} R_z\prn*{-\frac{(\beta+\beta')}{2}}, \\
+    C &= R_z\prn*{\frac{\beta-\beta'}{2}}.
+  \end{align*}
+  satisfy the conditions set out above for expressing an arbitrary
+  \(U\).  That is, show that \(ABC = I\) and that \(e^{i\alpha}AXBXC\)
+  gives the form we discussed in class for a general \(2 \times 2\)
+  unitary matrix.
+\end{problems}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\end{document}
