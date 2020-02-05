@@ -110,43 +110,42 @@
 
   Consider the two-qubit state \(\ket{\Psi^-}\), but imagine that we
   perform a measurement on qubit \(A\) only.
+
+  \begin{problems}
+  \item Consider measuring qubit \(A\) in the
+    \(\set{\ket 0_A, \ket 1_A}\) basis.  The probability of finding
+    qubit \(A\) in state \(\ket 0_A\) is given by
+    \[
+      \bra*{\Psi^-} \prn*{\hat P_{0,A} \otimes \hat I_B} \ket*{\Psi^-};
+    \]
+    here, \(\hat P_ 0\) is the single-qubit projection operator
+    \(\hat P_ 0 = \ket 0 \bra 0\).  The subscript \(A\) indicates that
+    it acts on qubit \(A\), and it is tensored with the identity
+    operator \(\hat I\) acting on qubit \(B\) since no measurement is
+    performed on qubit \(B\).  \textbf{Show} that the probability of
+    finding qubit \(A\) in state \(\ket 0_A\) is \(\frac 1 2\).
+
+  \item We may choose to write each qubit's state, not as a
+    superposition of \(\ket 0\) and \(\ket 1\), but as a superposition
+    of \(\ket \psi\) and \(\ket{\psi_\perp}\), where
+    \(\ket 0 = \alpha \ket \psi + \beta \ket{\psi_\perp}\),
+    \(\ket 1 = -\beta^* \ket \psi + \alpha^* \ket{\psi_\perp}\), and
+    \(\abs \alpha^2 + \abs \beta^2 = 1\).  \textbf{Show} that:
+    \[
+      \ket{\Psi^-} = \frac
+      {\ket \psi_A\ket{\psi_\perp}_B - \ket{\psi_\perp}_A\ket \psi_B}
+      {\sqrt 2}.
+    \]
+
+  \item If we measure qubit \(A\) in \textit{any}
+    \(\set*{\ket \psi_A, \ket{\psi_\perp}_A}\) basis, \textbf{show}
+    that the probability of finding qubit \(A\) in the state
+    \(\ket \psi_A\) is \(\frac 1 2\).  Thus the state of qubit \(A\)
+    by itself, independent of the state of qubit \(B\), is completely
+    uncertain and contains no information.  This is the hallmark of
+    complete entanglement between two particles.
+  \end{problems}
 \end{exercise}
-
-\begin{problems}
-\item Consider measuring qubit \(A\) in the
-  \(\set{\ket 0_A, \ket 1_A}\) basis.  The probability of finding
-  qubit \(A\) in state \(\ket 0_A\) is given by
-  \[
-    \bra*{\Psi^-} \prn*{\hat P_{0,A} \otimes \hat I_B} \ket*{\Psi^-};
-  \]
-  here, \(\hat P_ 0\) is the single-qubit projection operator
-  \(\hat P_ 0 = \ket 0 \bra 0\).  The subscript \(A\) indicates that
-  it acts on qubit \(A\), and it is tensored with the identity
-  operator \(\hat I\) acting on qubit \(B\) since no measurement is
-  performed on qubit \(B\).  \textbf{Show} that the probability of
-  finding qubit \(A\) in state \(\ket 0_A\) is \(\frac 1 2\).
-
-\item We may choose to write each qubit's state, not as a
-  superposition of \(\ket 0\) and \(\ket 1\), but as a superposition
-  of \(\ket \psi\) and \(\ket{\psi_\perp}\), where
-  \(\ket 0 = \alpha \ket \psi + \beta \ket{\psi_\perp}\),
-  \(\ket 1 = -\beta^* \ket \psi + \alpha^* \ket{\psi_\perp}\), and
-  \(\abs \alpha^2 + \abs \beta^2 = 1\).  \textbf{Show} that:
-  \[
-    \ket{\Psi^-} = \frac
-    {\ket \psi_A\ket{\psi_\perp}_B - \ket{\psi_\perp}_A\ket \psi_B}
-    {\sqrt 2}.
-  \]
-
-\item If we measure qubit \(A\) in \textit{any}
-  \(\set*{\ket \psi_A, \ket{\psi_\perp}_A}\) basis, \textbf{show} that
-  the probability of finding qubit \(A\) in the state \(\ket \psi_A\)
-  is \(\frac 1 2\).  Thus the state of qubit \(A\) by itself,
-  independent of the state of qubit \(B\), is completely uncertain and
-  contains no information.  This is the hallmark of complete
-  entanglement between two particles.
-
-\end{problems}
 
 \begin{solution}
   \begin{problems}
@@ -170,37 +169,37 @@
   unitary matrices such that \(ABC=I\).  In this problem, you will
   actually show that a general one-qubit \(U\) can be written this
   way.
+
+  \begin{problems}
+  \item Show that \(XR_y (\Delta) X = R_y (-\Delta)\), where
+    \(R_y(\Delta) =
+    \begin{bmatrix}
+      \cos \frac \Delta 2 & -\sin \frac \Delta 2 \\
+      \sin \frac \Delta 2 &  \cos \frac \Delta 2
+    \end{bmatrix}
+    \) represents rotation by angle \(\Delta\) about the \(y\) axis on
+    the Bloch sphere.
+
+  \item Show that \(XR_z(\gamma)X = R_z(-\gamma)\), where
+    \(R_z(\gamma) =
+    \begin{bmatrix}
+      e^{-i\gamma/2} & 0 \\ 0 & e^{i\gamma/2}
+    \end{bmatrix}
+    \) represents rotation by angle \(\gamma\) about the \(z\) axis on
+    the Bloch sphere.
+
+  \item Show that
+    \begin{align*}
+      A &= R_z(\beta') R_y \prn*{\frac \Delta 2}, \\
+      B &= R_y\prn*{-\frac \Delta 2} R_z\prn*{-\frac{(\beta+\beta')}{2}}, \\
+      C &= R_z\prn*{\frac{\beta-\beta'}{2}}.
+    \end{align*}
+    satisfy the conditions set out above for expressing an arbitrary
+    \(U\).  That is, show that \(ABC = I\) and that
+    \(e^{i\alpha}AXBXC\) gives the form we discussed in class for a
+    general \(2 \times 2\) unitary matrix.
+  \end{problems}
 \end{exercise}
-
-\begin{problems}
-\item Show that \(XR_y (\Delta) X = R_y (-\Delta)\), where
-  \(R_y(\Delta) =
-  \begin{bmatrix}
-    \cos \frac \Delta 2 & -\sin \frac \Delta 2 \\
-    \sin \frac \Delta 2 &  \cos \frac \Delta 2
-  \end{bmatrix}
-  \) represents rotation by angle \(\Delta\) about the \(y\) axis on
-  the Bloch sphere.
-
-\item Show that \(XR_z(\gamma)X = R_z(-\gamma)\), where
-  \(R_z(\gamma) =
-  \begin{bmatrix}
-    e^{-i\gamma/2} & 0 \\ 0 & e^{i\gamma/2}
-  \end{bmatrix}
-  \) represents rotation by angle \(\gamma\) about the \(z\) axis on
-  the Bloch sphere.
-
-\item Show that
-  \begin{align*}
-    A &= R_z(\beta') R_y \prn*{\frac \Delta 2}, \\
-    B &= R_y\prn*{-\frac \Delta 2} R_z\prn*{-\frac{(\beta+\beta')}{2}}, \\
-    C &= R_z\prn*{\frac{\beta-\beta'}{2}}.
-  \end{align*}
-  satisfy the conditions set out above for expressing an arbitrary
-  \(U\).  That is, show that \(ABC = I\) and that \(e^{i\alpha}AXBXC\)
-  gives the form we discussed in class for a general \(2 \times 2\)
-  unitary matrix.
-\end{problems}
 
 \begin{solution}
   \begin{problems}
