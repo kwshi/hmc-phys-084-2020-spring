@@ -55,7 +55,8 @@
           |[gate] (m)| \substack{\oquest 0 \\ \oquest 1} \\
           |(1)| \ket 1 &&
           |[gate] (h1)| H &
-          |[ghost] (f1)| F \\
+          |[ghost] (f1)| F &
+          |(e1)| \\
         };
 
         \draw (f0.north west) rectangle (f1.south east)
@@ -67,7 +68,7 @@
 
         \draw
         (0) -- (h0) -- (f0) -- (hh0) -- (m)
-        (1) -- (h1) -- (f1);
+        (1) -- (h1) -- (f1) -- (e1);
       \end{tikzpicture}
     \end{center}
 
