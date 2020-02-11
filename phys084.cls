@@ -66,6 +66,9 @@
   gate/.style={
     draw,
   },
+  ghost/.style={
+    opacity=0,
+  },
   ctrl/.style={
     circle,
     fill,

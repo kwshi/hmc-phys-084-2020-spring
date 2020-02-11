@@ -37,7 +37,49 @@
     what \(n\)-qubit measurement result you must get in the circuit
     below if the oracle encodes a constant \(f\).  \label{itm:circuit}
 
-    % \includegraphics[width=300pt]{fig2-1-1.pdf}
+    \begin{center}
+      \begin{tikzpicture}
+        \newcommand{\oquest}{
+          \mathop{
+            \tikz [baseline=(q.base)] {
+              \node [draw, circle, inner sep=0pt, font=\scriptsize]
+              (q) {\(?\)}
+            }
+          }
+        }
+        \matrix [quantum circuit] {
+          |(0)| \ket 0 & / &
+          |[gate] (h0)| H^{\otimes n} &
+          |[ghost] (f0)| F &
+          |[gate] (hh0)| H^{\otimes n} &
+          |[gate] (m)| \substack{\oquest 0 \\ \oquest 1} \\
+          |(1)| \ket 1 &&
+          |[gate] (h1)| H &
+          |[ghost] (f1)| F \\
+        };
+
+        \draw (f0.north west) rectangle (f1.south east)
+        node [midway] {\(F\)};
+
+        \node [below] at (m.south) {measure};
+        \node [right, font=\scriptsize] at (m.north east)
+        {\(\otimes n\)};
+
+        \draw
+        (0) -- (h0) -- (f0) -- (hh0) -- (m)
+        (1) -- (h1) -- (f1);
+      \end{tikzpicture}
+    \end{center}
+
+    %\[
+    %  \Qcircuit @C=1em {
+    %    \lstick{\ket 0} & \qw /^n & \gate{H^{\otimes n}} &
+    %    \multigate{1}{F} & \gate{H^{\otimes n}} &
+    %    \measure{\text{measure}^{\otimes n}} \\
+    %    \lstick{\ket 1} & \qw     & \gate{H}
+    %    & \ghost{F} & \qw
+    %  }
+    %\]
 
   \item Consider the same circuit as in part \ref{itm:circuit}, but
     let the oracle encode a balanced function \(f\).  \textbf{Show}
