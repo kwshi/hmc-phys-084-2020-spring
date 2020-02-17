@@ -167,6 +167,8 @@
 
 \DeclareMathOperator{\diam}{diam}
 
+\DeclareMathOperator{\lspan}{span}
+
 \DeclareMathOperator{\CNOT}{CNOT}
 \DeclareMathOperator{\CCNOT}{CCNOT}
 
