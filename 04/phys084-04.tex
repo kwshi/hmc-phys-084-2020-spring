@@ -12,9 +12,17 @@
   \begin{problems}
   \item Show that a \(\CNOT\) gate can be constructed from a
     controlled-\(Z\) gate and Hadamards as follows:
-    \begin{center}
-      % \includegraphics[width=400pt]{fig4-1-1-2019}
-    \end{center}
+    \[
+      \Qcircuit @R=1em @C=2em {
+        & \ctrl 1 & \qw \\
+        & \targ   & \qw
+      }
+      \qquad = \qquad
+      \Qcircuit @R=1em @C=2em {
+        & \qw     & \ctrl 1 & \qw     & \qw \\
+        & \gate H & \gate Z & \gate H & \qw
+      }
+    \]
 
     Thus it would be equally valid to use the controlled-\(Z\) gate as
     the only two-qubit gate in a quantum computing architecture,
