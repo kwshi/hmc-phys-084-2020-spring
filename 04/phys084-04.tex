@@ -1,0 +1,220 @@
+\documentclass{../phys084}
+
+\pset{4}
+\author{}
+\date{2020 February 18}
+
+\DeclareMathOperator{\ising}{ZZ}
+
+\begin{document}
+\section{Building a Toffoli gate}
+\begin{exercise}
+  \begin{problems}
+  \item Show that a \(\CNOT\) gate can be constructed from a
+    controlled-\(Z\) gate and Hadamards as follows:
+    \begin{center}
+      % \includegraphics[width=400pt]{fig4-1-1-2019}
+    \end{center}
+
+    Thus it would be equally valid to use the controlled-\(Z\) gate as
+    the only two-qubit gate in a quantum computing architecture,
+    instead of the \(\CNOT\).
+
+  \item Design a quantum circuit using only \(\CNOT\) and
+    controlled-\(R_z(\beta)\) gates to perform a
+    controlled-controlled-\(Z\) gate on three qubits.  (I won't ask
+    you in this problem to make the controlled-\(R_z(\beta)\) gates
+    out of \(\CNOT\)s and single-qubit unitaries, since you already
+    spent considerable time on the previous problem set showing how
+    that sort of thing can be done.)  Demonstrate that your circuit
+    performs as desired.  Hint: You will probably want to consult the
+    Class 5 slides and/or the ``Chapter 3.5'' notes for ideas on how
+    to construct controlled-controlled-\(U\) gates out of simpler
+    gates.
+
+  \item Design a quantum circuit using only \(\CNOT\), Hadamard gates,
+    and controlled-\(R_z(\beta)\) gates to perform a Toffoli
+    (controlled-controlled-\(\NOT\)) gate on three qubits.
+    Demonstrate that your circuit performs as desired.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Ising (\(\ising\)) gate}
+
+\begin{exercise}
+  In some quantum computing platforms, the easiest two-qubit gate to
+  implement is something called the Ising (\(\ising\)) coupling gate.
+  In the standard basis, this kind of gate is represented by a matrix
+  of the form
+  \[
+    \ising_\phi =
+    \begin{bmatrix}
+      e^{i\phi/2} & 0 & 0 & 0 \\
+      0 & e^{-i\phi/2} & 0 & 0 \\
+      0 & 0 & e^{-i\phi/2} & 0 \\
+      0 & 0 & 0 & e^{i\phi/2}
+    \end{bmatrix}.
+  \]
+  \begin{problems}
+  \item If \(\phi = \pi\), this gate does not actually involve any
+    interaction between the two qubits.  Show that \(\ising_\pi\)
+    factors into the form \(U_A \otimes U_B\), so that it just
+    represents separate single-qubit gates on the two qubits \(A\) and
+    \(B\).
+
+  \item If \(\phi = -\frac \pi 2\), show that the \(\ising_\phi\) gate
+    cannot be factored into the form \(U_A \otimes U_B\).  Therefore
+    \(\ising_{-\pi/2}\) does represent a nontrivial interaction
+    between the two qubits.
+
+  \item Show how a control-Z gate can be accomplished, up to an
+    overall phase factor, by a circuit that uses a \(\ising_{-\pi/2}\)
+    gate followed by \(R_z(\beta)\)-type gates on the i
+
+  \item Does it matter whether the \(R_z(\beta)\)-type gates on the
+    individual qubits come before or after the \(\ising_{-\pi/2}\)
+    gate?  Explain.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Using Hamiltonians to make logic gates}
+
+\begin{exercise}
+  Consider the electron spin qubit system we discussed in class and in
+  Chapter 4, where \(\ket 0\) is the state with spin up along the
+  \(z\) axis, and \(\ket 1\) is the state with spin down along the
+  \(z\) axis.  This is also a good model for one type of
+  superconducting qubit system, where superconducting loops can be in
+  the ``counter-clockwise current'' state (called \(\ket 0\)), the
+  ``clockwise current'' state (called \(\ket 1\)), or a quantum
+  superposition of the two.
+
+  In describing the physics of either type of quantum computer,
+  physicists define an operator \(\hat \sigma_z\) for each qubit, so
+  that \(\ket 0\) and \(\ket 1\) are eigenstates of \(\hat \sigma_z\),
+  with eigenvalues \(+1\) and \(-1\), respectively.  We also define an
+  operator \(\hat \sigma_x\) for each qubit, so that \(\ket +\) and
+  \(\ket -\) are eigenstates of \(\hat \sigma_x\) with eigenvalues
+  \(+1\) and \(-1\), respectively.  (The names of these operators, and
+  the \(+1\) and \(-1\) eigenvalues, come from the spin qubit system.)
+
+  Now think of two qubits A and B, such that the architecture of the
+  quantum computer can cause them to interact with each other.  Then
+  the Hamiltonian for the two qubits is of the form
+  \[
+    \hat H_\text{general}
+    = h_A \hat \sigma_{z,A} \otimes \hat I_B
+    + h_B \hat I_A \otimes \hat \sigma_{z,B}
+    + J_{AB} \hat \sigma_{z,A} \otimes \hat \sigma_{z,B}
+    + k_A \hat \sigma_{x,A} \otimes \hat I_B
+    + k_B \hat I_A \otimes \hat \sigma_{x,B}
+  \]
+  with \(h_A\), \(h_B\), \(J_{AB}\), \(k_A\), and \(k_B\) as numerical
+  parameters that can be adjusted in order to change (or ``tune") the
+  Hamiltonian and therefore the time evolution of the qubit states
+  according to the Schr\"odinger equation.  In the default or resting
+  situation, \(h_A = h_B = J_{AB} = k_A = k_B = 0\), so the states of
+  the two qubits do not evolve at all in time.  Parameters are set to
+  nonzero values for short time intervals in order to perform logic
+  gates.  In the logic gates considered in the rest of this problem,
+  \(k_A = k_B = 0\) so the last two terms in \(\hat H_\text{general}\)
+  are never present.
+
+  \begin{problems}
+  \item Consider the two-qubit computational basis states
+    \(\set*{\ket 0_A \ket 0_B, \ket 0_A \ket 1_B, \ket 1_A \ket 0_B,
+      \ket 1_A \ket 1_B}\).  What will each of these four states
+    become after it has been subjected to a Hamiltonian
+    \(\hat H_A = h_A \hat \sigma_{z,A} \otimes \hat I_B\) for a time
+    \(t\)?  Write your answer in terms of \(h_A\) and \(t\).
+
+  \item What will each basis state become after it has been subjected
+    to a Hamiltonian
+    \(\hat H_B = h_B \hat I_B \otimes \hat \sigma_{z,B}\) for time
+    \(t\)?  Write your answer in terms of \(h_B\) and \(t\).
+
+  \item What will each basis state become after it has been subjected
+    to a Hamiltonian
+    \(\hat H_{AB} = J_{AB}\hat \sigma_{z,A} \otimes \hat
+    \sigma_{z,B}\) for time \(t\)?  Write your answer in terms of
+    \(J_{AB}\) and \(t\).
+
+  \item Determine a way of using the tunable Hamiltonian
+    \(\hat H_\text{general}\) to perform (up to an overall phase
+    factor) a controlled-\(Z\) gate between qubits A and B.  In other
+    words, you will develop a procedure that carries out the
+    controlled-\(Z\) gate by setting the parameters \(h_A\), \(h_B\),
+    and \(J_{AB}\) to certain values for a time \(t_1\), then setting
+    them to new values for a time \(t_2\), and so on for as many steps
+    as your procedure requires.  Specify the parameter values and time
+    intervals at each step of your procedure.  Show that your
+    procedure does indeed carry out a controlled-\(Z\) gate, up to an
+    overall phase factor.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Inversion about the mean}
+
+\begin{exercise}
+  For a system of \(n\) qubits, we denote each of the \(2^n\)
+  computational basis states by \(\ket x\), where \(x\) ranges from
+  \(0\) to \(2^n-1\).  Let \(\ket \Psi\) denote the equal
+  superposition of all \(2^n\) basis states,
+  \[
+    \ket \Psi = \frac{1}{2^{n/2}} \sum^{2^n-1}_{x=0} \ket x.
+  \]
+  The operator \(\prn*{2 \ket \Psi \bra \Psi - \hat I}\) comes up in
+  Grover's algorithm.  It is sometimes called \textit{inversion about
+    the mean}; in this problem we will see one motivation for the
+  name.
+
+  Consider a general \(n\)-qubit state
+  \(\sum^{2^n-1}_{x=0} \alpha_x \ket x\).  This state can be rewritten
+  as
+  \[
+    \sum_{x=0}^{2^n-1}
+    (\abr \alpha + (\alpha_x - \abr \alpha)) \ket x
+  \]
+  where \(\abr \alpha = \frac{1}{2^n} \sum_x \alpha_x\) is the mean
+  value of the \(\alpha_x\) coefficients.  Show that
+  \[
+    \prn*{2 \ketbra \Psi \Psi - \hat I}
+    \prn*{\sum_x \alpha_x \ket x}
+    = \sum_{x=0}^{2^n-1}
+    (\abr \alpha - (\alpha_x - \abr \alpha)) \ket x.
+  \]
+  Thus the operator flips all the coefficients around the mean
+  coefficient value.
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\end{document}
