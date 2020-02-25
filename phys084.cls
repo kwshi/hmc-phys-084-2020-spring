@@ -172,6 +172,7 @@
 \DeclareMathOperator{\NOT}{NOT}
 \DeclareMathOperator{\CNOT}{CNOT}
 \DeclareMathOperator{\CCNOT}{CCNOT}
+\DeclareMathOperator{\CZ}{CZ}
 
 \DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{{#1} \delimsize\vert {#2}}
 \DeclarePairedDelimiterX{\ketbra}[2]{\lvert}{\rvert}{{#1} \delimsize\rangle \delimsize \langle {#2}}
