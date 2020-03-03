@@ -1,0 +1,88 @@
+\documentclass{../phys084}
+
+\pset{5}
+\author{}
+\date{2020 February 25}
+
+\begin{document}
+
+\section{Eigenstates and Eigenvalues of Modular Multiplication}
+
+\begin{exercise}
+  Consider the unitary operator \(\hat U\) which acts on \(n\)-qubit
+  computational basis states \(\ket w\) according to the rule
+  \(\hat U \ket w = \ket{a \cdot w \bmod N}\) for integers \(N\) and
+  \(a<N\).  Let \(r\) be the smallest counting number such that
+  \(a^r = 1 \pmod N\).  (This is the same as saying \(r\) is the order
+  of \(a\) modulo \(N\).)  In the factoring scenario, \(r\) is unknown
+  and the goal of our quantum algorithm is to estimate its value.
+
+  \begin{problems}
+  \item Show that the states \(\ket{u_h}\) defined below are
+    eigenstates of \(\hat U\) for integer values of \(h\).  Find the
+    eigenvalue associated with \(\ket{u_h}\).
+
+    \[
+      \ket{u_h} = \frac{1}{\sqrt r} \sum_{k=0}^{r-1}
+      \exp \prn*{\frac{-i2\pi h k}{r}} \ket*{a^k \bmod N}.
+    \]
+
+  \item Show that
+    \[
+      \frac{1}{\sqrt r} \sum_{h=0}^{r-1} \ket{u_h}
+      = \ket{\mathbf 1} = \ket{0 \dots 01}.
+    \]
+    [These facts explain how the order-finding algorithm can be
+    thought of as a phase-estimation algorithm for \(\hat U\).  The
+    order-finding ``output-register'' qubits initialized in
+    \(\ket{\mathbf 1} = \ket{0 \dots 01}\) form the \(n\)-qubit
+    reference register for phase estimation; part (b) shows that being
+    initialized in \(\ket{0...01}\) is the same as being initialized
+    in a superposition of various eigenvectors of \(\hat U\).  The
+    order-finding ``input'' register forms the \(t\)-qubit phase
+    register for phase estimation (it just so happens here that
+    \(t=n\) so both registers have the same number of qubits).  Both
+    algorithms call for it to be initialized in the equal
+    superposition of all basis states.  The measurement at the end of
+    the order-finding algorithm is highly likely to give the integer
+    closest to \(\frac{2^n \cdot h}{r}\) for some integer \(h\).  Part
+    (a) shows how this is explained in terms of phase estimation: the
+    final measurement is highly likely to give an integer
+    approximation of \(2^n\) times \(\frac{\theta}{2\pi}\), where
+    \(e^{i\theta}\) is some eigenvalue of \(\hat U\) belonging to an
+    eigenvector \(\ket{u_h}\).]
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{2-Qubit Quantum Fourier Transform}
+
+\begin{exercise}
+  \begin{problems}
+  \item Design and draw out a circuit that accomplishes the two-qubit
+    quantum Fourier transform using only Hadamard, controlled-\(S\),
+    and/or \(\CNOT\) gates.  (\(S = e^{i\pi/4}R_z(\frac \pi 2) =
+    \begin{bmatrix}
+      1 & 0 \\ 0 & e^{i\pi/2}
+    \end{bmatrix}
+    \) in the computational basis.)
+
+  \item Write the matrix representation of the two-qubit quantum
+    Fourier transform in the standard two-qubit computational basis.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\end{document}
