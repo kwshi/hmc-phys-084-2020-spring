@@ -1,0 +1,113 @@
+\documentclass{../phys084}
+
+\pset{6}
+\author{}
+\date{2020 March 11}
+
+\begin{document}
+
+\section{Alternate View of the 3-Qubit Bit-Flip Code}
+
+\begin{exercise}
+  We saw in class how to correct single bit-flip errors with the 3-qubit
+  bit-flip code.  In that version of the error-correction protocol, we
+  measured our two ancilla qubits in the \(\set{\ket 0, \ket 1}\) basis,
+  giving four possible measurement results.  Each measurement result
+  instructed us to perform a particular error-correcting operation on
+  the three code qubits.
+  \begin{problems}
+  \item Draw an error-correction circuit that performs the same 3-qubit
+    bit-flip correction without explicit measurement of the ancilla
+    qubits.  (Instead of measurement of the ancilla qubits and
+    conditional operations on the code qubits, try controlled-\(U\)
+    and/or controlled-controlled-\(U\) gates with the ancilla qubits as
+    controls and the code qubits as targets.)  Your circuit can use any
+    one-, two-, or three-qubit gates we have learned about in class,
+    including \(\CNOT\) and Toffoli gates.
+  \item At an arbitrary stage of a long quantum computation, the three
+    code qubits may be entangled with an external set of qubits, in a
+    state such as
+    \(\alpha \ket{000} \ket \psi_\text{ext} +
+    \beta\ket{111}\ket{\psi_{\perp}}_\text{ext}\).  Convince yourself
+    (and me!)  that our error correction procedure protects even an
+    entangled state like this against single bit-flip errors on the
+    three code qubits.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{Smallest Code for the Job}
+
+\begin{exercise}
+  Suppose we need to encode a general single-qubit state
+  \(\ket \psi = \alpha\ket 0 + \beta \ket 1\) in the states of \(n\)
+  physical qubits.  Without focusing on a particular error process or
+  a particular code, we can make some general statements about the
+  nature of the encoding situation.  Some \(n\)-qubit physical state
+  \(\ket{0_L}\) will represent \(\ket 0\), and some orthogonal
+  \(n\)-qubit physical state \(\ket{1_L}\) will represent \(\ket 1\).
+  Thus the initial encoded states \(\alpha\ket{0_L} + \beta\ket{1_L}\)
+  can be found in a two-dimensional subspace---the ``code space''---of
+  the overall \(2^n\)-dimensional state space for \(n\) qubits.  Each
+  particular error process maps the code space to some other
+  two-dimensional subspace.
+  \begin{problems}
+  \item A bit-flip code diagnoses and corrects a bit-flip error in any
+    one of the \(n\) qubits.  It also diagnoses the ``no-error'' state
+    and corrects \textit{it} by leaving it alone.  To permit this kind
+    of reliable diagnosis of \((n+1)\) different conditions, requiring
+    \((n+1)\) different correction protocols, it is necessary that the
+    code space be mapped to \((n+1)\) mutually orthogonal subspaces by
+    the \((n+1)\) different error or no-error processes.  Show that
+    this reasoning leads to the requirement \(2^n \geq 2(n+1)\) and
+    thus \(n \geq 3\).  Thus the 3-qubit bit-flip code is the smallest
+    possible code that can correct bit-flip errors.
+  \item Suppose we require an \(n\)-qubit code that can correct a bit
+    flip, a phase flip, or a combined bit-and-phase flip on any one of
+    the \(n\) qubits.  Develop a condition for the allowed values of
+    \(n\), and use it to show that \(n \geq 5\) for such a code.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+  \begin{problems}
+  \item
+  \item
+  \end{problems}
+\end{solution}
+
+\section{9-Qubit Shor Encoding Circuit}
+
+\begin{exercise}
+  The 9-qubit Shor code encodes \(\ket 0\) and \(\ket 1\) as
+  \begin{align*}
+    \ket{0_L} &= \frac
+    {(\ket{000}+\ket{111})(\ket{000}+\ket{111})(\ket{000}+\ket{111})}
+    {2 \sqrt 2}, \\
+    \ket{1_L} &= \frac
+    {(\ket{000}-\ket{111})(\ket{000}-\ket{111})(\ket{000}-\ket{111})}
+    {2\sqrt 2}.
+  \end{align*}
+  This code is a three-qubit phase-flip code, with a three-qubit
+  bit-flip code nested inside it.
+
+  Design a circuit that begins with a single qubit in state
+  \(\ket \psi = \alpha\ket 0 + \beta\ket 1\) and eight qubits in state
+  \(\ket 0\), and produces all nine qubits in the encoded state
+  \(\alpha\ket{0_L} + \beta\ket{1_L}\).  Explain or demonstrate how
+  your circuit produces the desired output.  [Hint: Draw inspiration
+  from the encoding circuits for the phase-flip code and the bit-flip
+  code individually.]
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\end{document}
