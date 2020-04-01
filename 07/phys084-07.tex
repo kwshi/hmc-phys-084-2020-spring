@@ -1,0 +1,129 @@
+\documentclass{../phys084}
+
+\pset{7}
+\author{}
+\date{2020 April Fools}
+
+\begin{document}
+
+\section{Just a \textit{Small} Error}
+
+\begin{exercise}
+  Suppose we are using the Steane to encode a logical qubit in the
+  states of seven physical qubits, thus detecting and correcting any
+  accidental \(\hat X\) operation, accidental \(\hat Z\) operation, or
+  accidental \(\hat X \hat Z\) operation on a single physical qubit.
+  Instead of one of these errors, suppose the first physical qubit has
+  undergone an accidental \(\hat R_y \prn*{\frac \pi 3}\).  Here
+  \(\hat R_y \prn*{\frac \pi 3}\) is defined as usual, so that its
+  matrix representation in the computational basis is
+  \[
+    R_y \prn*{\frac \pi 3} =
+    \begin{bmatrix}
+      \cos \frac \pi 6 & -\sin \frac \pi 6 \\
+      \sin \frac \pi 6 & \cos \frac \pi 6
+    \end{bmatrix}.
+  \]
+  \begin{itemize}
+  \item What fraction of the time will the Steane code syndrome
+    measurement circuit diagnose no error?
+  \item What fraction of the time will it diagnose an accidental
+    \(\hat X\) the first qubit?
+  \item What fraction of the time will it diagnose an accidental
+    \(\hat Z\) on the first qubit?
+  \item What fraction of the time will it diagnose an accidental
+    \(\hat X \hat Z\) on the first qubit?
+  \item Does the Steane code end up reliably correcting this
+    \(\hat R_y \prn*{\frac \pi 3}\) error?
+  \end{itemize}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\section{7-Qubit Steane Code Logical S and T Gates}
+
+\begin{exercise}
+  Recall that the \(S\) gate is represented in the
+  \(\{\ket 0,\ket 1\}\) basis by the matrix
+  \[
+    S =
+    \begin{bmatrix} 1 & 0 \\ 0 & i \end{bmatrix} =
+    \begin{bmatrix} 1 & 0 \\ 0 & e^{i \pi/2} \end{bmatrix},
+  \]
+  and that the \(T\) gate is represented in the \(\{\ket 0,\ket 1\}\)
+  basis by the matrix
+  \[
+    T = \begin{bmatrix} 1 & 0 \\ 0 & e^{i \pi/4} \end{bmatrix}.
+  \]
+
+  \begin{problems}
+  \item A logical \(S\) gate (called a \(S_L\) gate) on an encoded
+    qubit state is a gate (really accomplished by a multiple-gate
+    circuit) that takes \(\ket{0_L}\) to \(\ket{0_L}\) and takes
+    \(\ket{1_L}\) to \(i \ket{1_L}\).  For the 7-qubit Steane code,
+    show that performing an \(S\) gate on each individual qubit does
+    not accomplish the logical \(S\) operation.
+  \item Show that performing \(S\) and \(Z\) on each qubit
+    \textit{does} accomplish the logical \(S\) operation.
+  \item Show that there is \textbf{no} operation represented by a
+    matrix of the form
+    \[
+      \begin{bmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{bmatrix}
+    \]
+    that can be applied to each individual qubit to accomplish the
+    logical \(T\) operation.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\section{Nonlocality of Coded States}
+
+\begin{exercise}
+  The two full QEC codes we have studied in class are designed to
+  combat local error processes, \textit{i.e.}, errors that occur on
+  individual qubits in an uncorrelated way.  We have claimed that our
+  codes protect against these local errors by encoding information
+  nonlocally, in the correlations between the states of different
+  qubits rather than in the state of any individual qubit by itself.
+  In this problem, you will learn that the code words (\(\ket{0_L}\)
+  and \(\ket{1_L}\)) for both the 9-qubit Shor code and the 7-qubit
+  Steane code are truly nonlocal, entangled states of the individual
+  qubits.
+
+  Consider a state \(\ket{\mathbf \Psi}\) of \(n\) qubits that,
+  written with the state of the first qubit separated from the other
+  \(n-1\), appears as follows:
+  \[
+    \ket{\mathbf \Psi} =
+    \frac{1}{\sqrt 2} \prn*{\ket 0 \ket \phi + \ket 1 \ket \chi},
+  \]
+  with \(\braket \chi \phi = 0\).  The logic of Problem 3.3 can be
+  applied to this \(n\)-qubit state to show that the lone qubit has
+  probability \(\frac 1 2\) to be found in any, arbitrary state
+  \(\ket \psi = \alpha \ket 0 + \beta \ket 1\).  Thus if an
+  \(n\)-qubit state can be written in this form, the state of the lone
+  qubit on its own is completely undefined.
+  \begin{problems}
+  \item For the encoded states \(\ket{0_L}\) and \(\ket{1_L}\) of the
+    9-qubit Shor code, show that the state of each qubit on its own is
+    completely undefined.
+  \item For the encoded states \(\ket{0_L}\) and \(\ket{1_L}\) of the
+    7-qubit Steane code, show that the state of each qubit on its own
+    is completely undefined.  You may want to use the fact that each
+    computational basis state appearing in the encoded state
+    \(\ket{0_L}\) has an even number of \(1\)'s, while each
+    computational basis state appearing in the encoded state
+    \(\ket{1_L}\) has an odd number of \(1\)'s.
+  \end{problems}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\end{document}
