@@ -67,7 +67,10 @@
     draw,
   },
   ghost/.style={
-    opacity=0,
+    draw=none,
+    fill=none,
+    text=none,
+    %opacity=0,
   },
   ctrl/.style={
     circle,
@@ -86,11 +89,25 @@
       (current bounding box.west) -- (current bounding box.east);
     },
   },
+  annotation/.style={
+    opacity=1/2,
+  },
+  guide/.style={
+    annotation,
+    densely dotted,
+  },
   quantum circuit/.style={
     matrix of math nodes,
     cells={anchor=center},
-    row sep=1em,
     column sep=1em,
+  },
+  compact/.style={column sep=1em/2},
+  box/.style={
+    rounded corners=1em/8,
+    to path={
+      ($ (\tikztostart) + 1/4*(1em,-1em) $) rectangle
+      ($ (\tikztotarget) + 1/4*(-1em,1em) $)
+    },
   },
 }
 
