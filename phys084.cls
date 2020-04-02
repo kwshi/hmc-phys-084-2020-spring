@@ -183,6 +183,7 @@
 \newcommand{\pdrv}[3][]{\frac{\pdif^{#1} #2}{\pdif #3^{#1}}}
 
 \DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\diag}{diag}
 
 \DeclareMathOperator{\lspan}{span}
 
