@@ -1,0 +1,202 @@
+\documentclass{../phys084}
+
+\pset 8
+\author {}
+\date {2020 April 8}
+
+\begin {document}
+
+\section {Single-Qubit Density Matrix}
+
+\begin {exercise}
+  Consider an arbitrary density matrix \(\rho\) for a single qubit (in
+  a pure state \textit{or} a mixed state).  This density matrix
+  represents, in the computational basis, a density operator
+  \(\hat \rho\) which can be written as
+  \(\hat \rho = \sum_i p_i \proj {\psi_i}\) for some ensemble of
+  states \(\set {\ket {\psi_i}}\) and probabilities \(p_i\).  This
+  implies various properties of the density matrix \(\rho\),
+  including: \(\rho\) is Hermitian, \(\rho\) is diagonalizable with
+  positive eigenvalues, \(\tr \rho = 1\), and \(\tr \rho^2 \le 1\).
+
+  \begin {problems}
+  \item We define matrices
+    \begin {align*}
+      I &= \begin {bmatrix} 1 & 0 \\ 0 & 1 \end {bmatrix}, &
+      \sigma_x &= \begin {bmatrix} 0 & 1 \\ 1 & 0 \end {bmatrix}, \\
+      \sigma_y &= \begin {bmatrix} 0 & -i \\ i & 0 \end {bmatrix}, &
+      \sigma_z &= \begin {bmatrix} 1 & 0 \\ 0 & -1 \end {bmatrix}.
+    \end {align*}
+    (The first matrix is, of course, the \(2 \times 2\) identity
+    matrix, and physicists will recognize the other three as the Pauli
+    matrices.)  Show that an arbitrary single-qubit density matrix can
+    be written:
+    \[
+      \rho = \frac {I + \vec r \cdot \vec \sigma} 2
+      = \frac {I + r_x \sigma_x + r_y \sigma_y + r_z \sigma_z} 2,
+    \]
+    where \(\vec r\) is a real, three-dimensional vector with length
+    less than or equal to 1.  This vector is called the \textit{Bloch
+      vector} for the single-qubit state represented by \(\rho\).
+  \item Show that the Bloch vector has length 1 if and only if
+    \(\rho\) represents a pure state.  Thus pure states have Bloch
+    vectors on the surface of the Bloch sphere (unit sphere),
+    consistent with our previous understanding; mixed states have
+    Bloch vectors on the \textit {interior} of the Bloch sphere.
+  \end {problems}
+\end {exercise}
+
+\begin {solution}
+  \begin {problems}
+  \item
+  \item
+  \end {problems}
+\end {solution}
+
+\section {Bloch Vectors and the Bloch Sphere}
+
+\begin {exercise}
+  \begin {problems}
+  \item Consider a single-qubit pure state
+    \(\ket \psi = \cos \frac \theta 2 \ket 0 + e^{i \varphi} \sin
+    \frac \theta 2 \ket 1\).  Find the Bloch vector for this state
+    according to the prescription of Problem 8.1, and show that it is
+    the same as the vector on the Bloch sphere that we associated with
+    this pure state in Chapter 2.
+  \item Consider the single-qubit density operator
+    \(\hat \rho = \frac 1 2 \ket \psi \bra \psi + \frac 1 2 \proj
+    {\psi_{\perp}}\).  We saw in class that, independent of the
+    specific state \(\ket \psi\), this density operator is always
+    equal to \(\frac 1 2 \proj 0 + \frac 1 2 \proj 1\).  What is the
+    density matrix representing this density operator?  Show that the
+    Bloch vector for this mixed state is the vector of length zero.
+  \end {problems}
+\end {exercise}
+
+\begin {solution}
+  \begin {problems}
+  \item
+  \item
+  \end {problems}
+\end {solution}
+
+\section {Entangled or Not?}
+
+\begin {exercise}
+  For each of the following two-qubit pure states,
+  \begin {enumerate*} [label=(\roman*)]
+  \item give the full density matrix in the computational basis
+    \(\{\ket{00},\ket{01},\ket{10},\ket{11}\}\),
+  \item perform the
+    partial trace over qubit A to find the reduced density matrix
+    \(\rho_B\) in the \(\{\ket 0,\ket 1\}\) basis, and
+  \item use the
+    reduced density matrix to determine whether the two qubits were
+    (at least partly) entangled with each other in the original state.
+  \end {enumerate*}
+  \begin {problems}
+  \item \(\frac {\ket {00} + \ket {11}} {\sqrt 2}\)
+  \item \(\frac {\ket {00} + \ket {01} + \ket {10}} {\sqrt 3}\)
+  \item \(\frac {\ket {00} + \ket {01} + \ket {10} + \ket {11}} 2\)
+  \end {problems}
+\end {exercise}
+
+\begin {solution}
+  \begin {problems}
+  \item
+  \item
+  \item
+  \end {problems}
+\end {solution}
+
+\section{Quantum Dense Coding with Qutrits}
+
+\begin {exercise}
+  In this course, we have focused almost entirely on qubits---quantum
+  particles with two-dimensional state spaces, spanned by the
+  orthogonal states \(\set {\ket 0, \ket 1}\).  In this problem, let
+  us instead use quantum particles where each particle has three
+  mutually distinguishable (and thus orthonormal) states
+  \(\set {\ket 0, \ket 1, \ket 2}\).  A general pure state of a
+  \textit{qutrit} like this is thus written
+  \(\alpha \ket 0 + \beta \ket 1 + \gamma \ket 2\).
+
+  Suppose Alice and Bob share a pair of qutrits in the entangled state
+  \[
+    \ket {\Phi^0_0}_{AB}
+    = \frac 1 {\sqrt 3}
+    \prn* {\ket 0_A \ket 0_B + \ket 1_A \ket 1_B + \ket 2_A \ket 2_B}.
+  \]
+
+  \begin {problems}
+  \item Verify that this state is entangled by writing the density
+    matrix in the
+    \(\set {\ket {00}, \ket {01}, \ket {02}, \ket {10}, \ket {11},
+      \ket {12}, \ket {20}, \ket {21}, \ket {22}}\) basis and
+    performing the partial trace over qutrit \(A\) to find the reduced
+    density matrix for qutrit \(B\).
+  \item
+    \label{itm:nine}
+    Alice intends to send Bob one of nine pre-arranged messages by
+    performing an operation on her qutrit to transform the entangled
+    state into one of the nine states listed below.  She will then
+    send her qutrit to Bob so he can measure both qutrits together and
+    determine which message Alice was sending.  Verify that the nine
+    \textit{qutrit Bell states} listed below are mutually orthogonal,
+    so that Bob can in principle perform a measurement on the two
+    particles to distinguish these nine states from each other
+    unambiguously.  \newcommand {\kk} [2] {\ket {#1}_A \ket {#2}_B}
+    \begin {align*}
+      \ket {\Phi^0_0}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 0 + \kk 1 1 + \kk 2 2) \\
+      \ket {\Phi^1_0}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 0 + e^{i2\pi/3} \kk 1 1 + e^{i4\pi/3} \kk 2 2) \\
+      \ket {\Phi^2_0}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 0 + e^{i4\pi/3} \kk 1 1 + e^{i2\pi/3} \kk 2 2) \\
+      \ket {\Phi^0_1}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 1 + \kk 1 2 + \kk 2 0) \\
+      \ket {\Phi^1_1}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 1 + e^{i2\pi/3} \kk 1 2 + e^{i4\pi/3} \kk 2 0) \\
+      \ket {\Phi^2_1}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 1 + e^{i4\pi/3} \kk 1 2 + e^{i2\pi/3} \kk 2 0) \\
+      \ket {\Phi^0_2}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 2 + \kk 1 0 + \kk 2 1) \\
+      \ket {\Phi^1_2}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 2 + e^{i2\pi/3} \kk 1 0 + e^{i4\pi/3} \kk 2 1) \\
+      \ket {\Phi^2_2}_{AB} &= \frac 1 {\sqrt 3}
+      (\kk 0 2 + e^{i4\pi/3} \kk 1 0 + e^{i2\pi/3} \kk 2 1).
+    \end {align*}
+  \item Suppose Alice has access to a phase-shifting operator
+    \(\hat P\) and a value-shifting operator \(\hat V\) that she can
+    apply to her qutrit.  These are represented in the
+    \(\set {\ket 0, \ket 1, \ket 2}\) basis as:
+    \begin {align*}
+      \hat P \rightarrow P &=
+      \begin {bmatrix}
+        1 & 0 & 0 \\
+        0 & e^{i2\pi/3} & 0 \\
+        0 & 0 & e^{i4\pi/3}
+      \end {bmatrix}, \\
+      \hat V \rightarrow V &=
+      \begin {bmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+      \end {bmatrix}.
+    \end {align*}
+    Specify the nine operations by Alice, composed of applications of
+    \(\hat V\) and/or \(\hat P\) to her qutrit in various
+    combinations, that will turn the initial entangled state into each
+    of the nine entangled states listed in part \ref{itm:nine}.
+  \end {problems}
+\end {exercise}
+
+\begin {solution}
+  \begin {problems}
+  \item
+  \item
+  \item
+  \end {problems}
+\end {solution}
+
+\end {document}
