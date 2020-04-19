@@ -187,6 +187,10 @@
 
 \DeclareMathOperator{\lspan}{span}
 \DeclareMathOperator{\tr}{tr}
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
 
 \DeclareMathOperator{\NOT}{NOT}
 \DeclareMathOperator{\CNOT}{CNOT}
