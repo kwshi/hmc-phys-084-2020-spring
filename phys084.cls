@@ -48,6 +48,9 @@
 \RequirePackage{esint}
 \RequirePackage{textcomp}
 
+\RequirePackage{booktabs}
+\RequirePackage{array}
+
 \RequirePackage{isomath}
 \RequirePackage{centernot}
 \RequirePackage{cancel}
